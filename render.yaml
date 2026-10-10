@@ -36,7 +36,7 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_URL
-        value: https://examhub-backend.onrender.com/api
+        value: https://examhub-backend-7d97.onrender.com/api
 
 databases:
   # Managed PostgreSQL Database
