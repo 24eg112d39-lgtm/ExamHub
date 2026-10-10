@@ -23,14 +23,13 @@ services:
       - key: CORS_ALLOWED_ORIGINS
         value: https://*.onrender.com,http://localhost:5173
 
-  # React Vite Frontend Static Site (Global CDN)
+  # React Vite Frontend Static Site (Global CDN - no plan or region needed)
   - type: web
     name: examhub-frontend
     runtime: static
     rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    plan: free
     routes:
       - type: rewrite
         source: /*
