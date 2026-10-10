@@ -151,13 +151,13 @@ INSERT INTO exams (id, subject_id, exam_date, start_time, end_time, duration_min
 INSERT INTO exam_registrations (exam_id, student_id, registration_status, registered_at)
 SELECT 1, id, 'REGISTERED', CURRENT_TIMESTAMP FROM students;
 
--- Reset sequences for seeded tables
-ALTER TABLE users ALTER COLUMN id RESTART WITH 200;
-ALTER TABLE departments ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE subjects ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE students ALTER COLUMN id RESTART WITH 100;
-ALTER TABLE exam_halls ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE seats ALTER COLUMN id RESTART WITH 200;
-ALTER TABLE exams ALTER COLUMN id RESTART WITH 10;
-ALTER TABLE exam_registrations ALTER COLUMN id RESTART WITH 100;
+-- Reset sequences for seeded tables in PostgreSQL
+SELECT setval(COALESCE(pg_get_serial_sequence('users', 'id'), 'users_id_seq'), 200);
+SELECT setval(COALESCE(pg_get_serial_sequence('departments', 'id'), 'departments_id_seq'), 10);
+SELECT setval(COALESCE(pg_get_serial_sequence('subjects', 'id'), 'subjects_id_seq'), 10);
+SELECT setval(COALESCE(pg_get_serial_sequence('students', 'id'), 'students_id_seq'), 100);
+SELECT setval(COALESCE(pg_get_serial_sequence('exam_halls', 'id'), 'exam_halls_id_seq'), 10);
+SELECT setval(COALESCE(pg_get_serial_sequence('seats', 'id'), 'seats_id_seq'), 200);
+SELECT setval(COALESCE(pg_get_serial_sequence('exams', 'id'), 'exams_id_seq'), 10);
+SELECT setval(COALESCE(pg_get_serial_sequence('exam_registrations', 'id'), 'exam_registrations_id_seq'), 100);
 
